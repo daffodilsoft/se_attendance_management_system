@@ -10,7 +10,7 @@ class Attendance(models.Model):
 
     attendance_date = fields.Date(string='Date:', default=fields.Date.today())
     name = fields.Char(string='Name:')
-    attendance_course = fields.Char(string="Course Name:")
+    attendance_course = fields.Many2one(comodel_name='se.subject', string="Course Name:")
     program_id = fields.Many2one(comodel_name='se.program')
     semester_id = fields.Many2one(comodel_name='se.semester')
     # notice_type = fields.Char(related='semester_id.name')
