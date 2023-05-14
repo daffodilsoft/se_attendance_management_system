@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+<!--        #main menu-->
+        <menuitem
+                id="menu_attendance_root"
+                name="Student Attendance"
+                action="open_view_attendance_create_action_1"/>
+
+        <menuitem id="menu_se_attendance"
+                  name="Attendance"
+                  parent="menu_attendance_root"
+                  sequence="10"/>
+
+        <menuitem id="menu_se_attendance_create_sub"
+                  name="Attendance Create"
+                  parent="menu_se_attendance"
+                  sequence="10"
+                  action="open_view_attendance_create_action_1"/>
+
+        <menuitem id="menu_se_attendance_sheet_sub"
+                  name="Sheets"
+                  parent="menu_se_attendance"
+                  sequence="20"
+                  action="open_view_attendance_create_action_1"/>
+
+<!--        <menuitem id="menu_se_attendance_line_sub"-->
+<!--                  name="Attendance lines"-->
+<!--                  parent="menu_se_attendance"-->
+<!--                  sequence="30"-->
+<!--                  action="open_view_attendance_create_action_1"/>-->
+    </data>
+</odoo>
