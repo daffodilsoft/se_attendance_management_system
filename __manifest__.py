@@ -13,6 +13,7 @@
     'website': 'https://www.google.com',
     'images': [],
     'depends': [
+        'smartedu_core',
         'base',
         'mail',
         'website',
@@ -22,6 +23,7 @@
     # Data
     # views
         'views/attendance_create_view.xml',
+        'views/se_student_view.xml',
         'views/menus.xml',
     ],
     'demo': [

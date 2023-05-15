@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_product_form_inherit" model="ir.ui.view">
+            <field name="name">se.student.form</field>
+            <field name="model">se.student</field>
+            <field name="inherit_id" ref="smartedu_education.se_education_core_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='gender']" position="after">
+                    <field name="attendance_create_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
