@@ -19,18 +19,20 @@
         'website',
     ],
     'data': [
-    # Security
-    # Data
-    # views
+        # Security
+        'security/ir.model.access.csv',
+        # Data
+        # views
         'views/attendance_create_view.xml',
         'views/se_student_view.xml',
         'views/menus.xml',
+        'views/sheet_view.xml',
     ],
     'demo': [
-    
+
     ],
     'qweb': [
-    
+
     ],
     'installable': True,
     'application': True,

@@ -21,7 +21,7 @@
                   name="Sheets"
                   parent="menu_se_attendance"
                   sequence="20"
-                  action="open_view_attendance_create_action_1"/>
+                  action="open_sheet_view_action_1"/>
 
 <!--        <menuitem id="menu_se_attendance_line_sub"-->
 <!--                  name="Attendance lines"-->

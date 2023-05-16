@@ -17,9 +17,10 @@ class Attendance(models.Model):
     section = fields.Char(string="Section:")
     classroom = fields.Char(string="Class Room:")
     student_name = fields.Char(string="Student Name:")
+    batch_id = fields.Many2one(comodel_name='se.batch')
     # remark = fields.Boolean(string="Remark")
-    student_id = fields.One2many(comodel_name="se.student",
-                                 inverse_name='attendance_create_id')
+    student_ids = fields.One2many(comodel_name="se.student",
+                                  related='batch_id.student_ids')
     active = fields.Boolean(string='Active:', default=True)
     state = fields.Selection([
         ('draft', 'Draft'),
