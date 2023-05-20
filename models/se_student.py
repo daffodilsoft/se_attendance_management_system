@@ -5,4 +5,4 @@ class SeStudent(models.Model):
     _inherit = 'se.student'
 
     attendance_create_id = fields.Many2one(comodel_name='se.attendance.management.system')
-    present = fields.Boolean(string="Present")
+    attendance = fields.Boolean(default=False)

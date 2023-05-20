@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="student_list_view_form" model="ir.ui.view">
+            <field name="name">student_list_view_form</field>
+            <field name="model">student.attendance.wizard</field>
+            <field name="arch" type="xml">
+                <form string="student_list_form">
+                    <sheet>
+                        <group>
+                            <field name="student_attendance_line_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="student_id_string"/>
+                                    <field name="attendance"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

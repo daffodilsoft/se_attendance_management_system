@@ -9,18 +9,12 @@
                 <tree decoration-success="state == 'done'" decoration-danger="state == 'cancel'" multi_edit="1">
                     <field name="attendance_date"/>
                     <field name="name"/>
-<!--                    <field name="program_id"/>-->
-<!--                    <field name="attendance_course"/>-->
+                    <field name="program_id"/>
                     <field name="semester_id"/>
                     <field name="section"/>
                     <field name="classroom"/>
-<!--                    <field name="batch_id"/>-->
-                    <field name="student_ids">
-                        <tree>
-                            <field name="name"/>
-                            <field name="student_id_string"/>
-                        </tree>
-                    </field>
+                    <field name="batch_id"/>
+                    <field name="total_present_student"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -35,17 +29,11 @@
                 <form>
                     <!--                status bar start-->
                     <header>
-                        <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary"
-                                states="draft"
+                        <button id="button_done" name="action_done" string="Mark As Done" class="btn-primary" states="confirm"
                                 type="object"/>
-                        <button id="button_done" name="action_done" string="Mark As Done" class="btn-primary"
-                                states="confirm"
+                        <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" states="cancel"
                                 type="object"/>
-                        <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary"
-                                states="cancel"
-                                type="object"/>
-                        <button class="btn-danger" id="button_cancel" name="action_cancel" string="Cancel"
-                                states="draft,done,confirm"
+                        <button class="btn-danger" id="button_cancel" name="action_cancel" string="Cancel" states="draft,done,confirm"
                                 type="object"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
                     </header>
@@ -74,27 +62,41 @@
                                 <field name="attendance_date"/>
                                 <field name="name"/>
                                 <field name="program_id"/>
-<!--                                <field name="attendance_course"/>-->
+                                <field name="total_student" readonly="True"/>
                             </group>
+
                             <group>
                                 <field name="semester_id"/>
                                 <field name="section"/>
                                 <field name="batch_id"/>
                                 <field name="classroom"/>
+                                <field name="total_present_student" readonly="True"/>
+                            </group>
+                            <group>
+                                <button name="generate_students"
+                                        type="object"
+                                        string="StudentList"
+                                        class="btn btn-primary"/>
                             </group>
                         </group>
 
                         <notebook>
                             <!-- Students Information-->
-                            <page name="students_information" string="Students Information">
-                                <field name="student_ids" >
-                                    <tree>
-                                        <field name="name"/>
-                                        <field name="student_id_string"/>
-                                        <field name="present"/>
+                            <page name="students_information" string="Student Information"  states='start'>
+                                <field name="student_attendance_line_ids">
+                                    <tree create="False" edit="True" delete="False" editable="bottom"
+                                          class="tree_no_open">
+                                        <field name="name" readonly="True"/>
+                                        <field name="student_id_string" readonly="True"/>
+                                        <field name="attendance" options="{'no_create':True, 'no_create_edit':True}"/>
                                     </tree>
                                 </field>
-
+                                <group>
+                                    <button name="submit_attendance"
+                                            type="object"
+                                            string="Submit"
+                                            class="btn btn-primary"/>
+                                </group>
                             </page>
                         </notebook>
                     </sheet>

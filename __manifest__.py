@@ -22,11 +22,13 @@
         # Security
         'security/ir.model.access.csv',
         # Data
+
+        # Wizards
         # views
         'views/attendance_create_view.xml',
         'views/se_student_view.xml',
         'views/menus.xml',
-        'views/sheet_view.xml',
+        'views/attendance_create_view.xml',
     ],
     'demo': [
 
@@ -34,6 +36,11 @@
     'qweb': [
 
     ],
+    # 'assets': {
+    #     'web.assets_backend':[
+    #         'smartedu_attendance_management_system/static/src/js/attendance.js',
+    #     ],
+    # },
     'installable': True,
     'application': True,
     'auto_install': False,
