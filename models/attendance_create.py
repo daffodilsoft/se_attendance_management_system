@@ -9,18 +9,29 @@ class Attendance(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     attendance_date = fields.Date(string='Date:', default=fields.Date.today())
-    name = fields.Many2one(comodel_name='se.subject', string="Course Name:")
+    name = fields.Many2one(comodel_name='se.subject', string="Course Name")
     program_id = fields.Many2one(comodel_name='se.program')
     semester_id = fields.Many2one(comodel_name='se.semester')
-    semester = fields.Char(string="Semester:")
-    section = fields.Char(string="Section:")
-    total_student = fields.Integer(string="Total Student:")
+    semester = fields.Char(string="Semester")
+    section = fields.Char(string="Section")
+    total_student = fields.Integer(string="Total Student")
     total_present_student = fields.Integer(string="Present Student:")
-    classroom = fields.Char(string="Class Room:")
-    student_name = fields.Char(string="Student Name:")
+    classroom = fields.Char(string="Class Room")
+    student_name = fields.Char(string="Student Name")
     batch_id = fields.Many2one(comodel_name='se.batch')
     student_attendance_line_ids = fields.One2many(comodel_name="student.attendance.line",
                                                   inverse_name="attendance_id")
+    time_slot = fields.Selection([
+        ('8:30 - 9:30', '8:30 - 9:30'),
+        ('9:30 - 10-30', '9:30 - 10-30'),
+        ('10:30 - 11:30', '10:30 - 11:30'),
+        ('11:30 - 12:30', '11:30 - 12:30'),
+        ('12:30 - 1:30', '12:30 - 1:30'),
+        ('1:30 - 2:30', '1:30 - 2:30'),
+        ('2:30 - 3:30', '2:30 - 3:30'),
+        ('3:30 - 4:30', '3:30 - 4:30'),
+        ('4:30 - 5:30', '4:30 - 5:30'),
+    ], string='Select Slot')
 
     active = fields.Boolean(string='Active:', default=True)
     state = fields.Selection([
