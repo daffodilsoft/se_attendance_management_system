@@ -56,11 +56,7 @@ class Attendance(models.Model):
     @api.onchange('batch_id')
     def _onchange_batch(self):
         for rec in self:
-            student_list = 0
             if self.batch_id:
-                logging.info('----------------Student________________')
-                logging.info(student_list)
-                logging.info('----------------')
                 total_student = self.env['se.batch'].sudo().search([(
                     'id', '=', rec.batch_id.id
                 )])
@@ -105,6 +101,15 @@ class Attendance(models.Model):
         present_student = self.env['student.attendance.line'].sudo().search([(
             'attendance_id', '=', self.id,
         )])
+
+        for rec in self:
+            if self.batch_id:
+                total_student = self.env['se.batch'].sudo().search([(
+                    'id', '=', rec.batch_id.id
+                )])
+                total_student = len(total_student.student_ids)
+                rec.total_student = total_student
+
         total_present_student = 0
         for student in present_student:
             if student['attendance'] == True:
