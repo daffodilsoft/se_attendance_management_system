@@ -15,7 +15,8 @@ class Attendance(models.Model):
     semester = fields.Char(string="Semester")
     section = fields.Char(string="Section")
     total_student = fields.Integer(string="Total Student")
-    total_present_student = fields.Integer(string="Present Student:")
+    total_present_student = fields.Integer(string="Present Student")
+    total_absent_student = fields.Integer(string="Absent Student")
     classroom = fields.Char(string="Class Room")
     student_name = fields.Char(string="Student Name")
     batch_id = fields.Many2one(comodel_name='se.batch')
@@ -115,6 +116,8 @@ class Attendance(models.Model):
             if student['attendance'] == True:
                 total_present_student += 1
         self.total_present_student = total_present_student
+        total_absent_student = total_student - total_present_student
+        self.total_absent_student = total_absent_student
         self.state = 'done'
 
 

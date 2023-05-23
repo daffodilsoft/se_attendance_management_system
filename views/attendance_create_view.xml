@@ -63,7 +63,6 @@
                                 <field name="program_id"/>
                                 <field name="batch_id"/>
                                 <field name="semester_id"/>
-                                <field name="total_student" readonly="True"/>
                             </group>
 
                             <group>
@@ -71,7 +70,9 @@
                                 <field name="name"/>
                                 <field name="classroom"/>
                                 <field name="time_slot"/>
+                                <field name="total_student" readonly="True"/>
                                 <field name="total_present_student" readonly="True"/>
+                                <field name="total_absent_student" readonly="True"/>
                             </group>
                             <group>
                                 <button name="generate_students"
