@@ -19,6 +19,8 @@ class Attendance(models.Model):
     total_student = fields.Integer(string="Total Student")
     total_present_student = fields.Integer(string="Present")
     total_absent_student = fields.Integer(string="Absent")
+    progress = fields.Float()
+    progress_string = fields.Char(string="Percentage")
     classroom = fields.Char(string="Class Room")
     student_name = fields.Char(string="Student Name")
     batch_id = fields.Many2one(comodel_name='se.batch')
@@ -129,6 +131,8 @@ class Attendance(models.Model):
         self.total_present_student = total_present_student
         total_absent_student = total_student - total_present_student
         self.total_absent_student = total_absent_student
+        progress = (total_present_student / total_student) * 100
+        self.progress_string = f"{progress}%"
         self.state = 'done'
 
 

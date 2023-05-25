@@ -14,6 +14,7 @@
                     <field name="section"/>
                     <field class="p-1 mb-2 text-success fw-bold fs-5 position-relative py-2 px-4" name="total_present_student"/>
                     <field class="p-1 mb-2 text-danger fw-bold fs-5 position-relative py-2 px-4" name="total_absent_student"/>
+                    <field name="progress_string"/>
                     <field name="state"/>
                 </tree>
             </field>
