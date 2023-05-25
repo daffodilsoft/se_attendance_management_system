@@ -22,13 +22,11 @@
         # Security
         'security/ir.model.access.csv',
         # Data
-
-        # Wizards
+        'data/data.xml',
         # views
         'views/attendance_create_view.xml',
         'views/se_student_view.xml',
         'views/menus.xml',
-        'views/attendance_create_view.xml',
     ],
     'demo': [
 

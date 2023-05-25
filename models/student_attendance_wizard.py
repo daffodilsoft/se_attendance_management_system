@@ -5,15 +5,7 @@ class StudentAttendance(models.TransientModel):
     _name = "student.attendance.wizard"
     _description = "Student Attendance"
 
-    # student_ids = fields.One2many(comodel_name="se.student",
-    #                               related="batch_id.student_ids",
-    #                               readonly=False)
-    # student_attendance_line_ids = fields.One2many(comodel_name="student.attendance.line",
-    #                                               inverse_name="attendance_id",
-    #                                               readonly=False)
-
     def count_total_attendances(self):
-        # attendance_id = self.env.get.context('attendance_id')
         batch_id = self.env.context.get('batch_id')
         students = self.env['se.student'].sudo().search({
             'batch_id.id', '=', batch_id.id

@@ -11,23 +11,5 @@
                   parent="menu_attendance_root"
                   action="open_view_attendance_create_action_1"
                   sequence="101"/>
-
-<!--        <menuitem id="menu_se_sheet"-->
-<!--                  name="Sheets"-->
-<!--                  parent="menu_se_attendance"-->
-<!--                  sequence="102"-->
-<!--                  action="open_view_attendance_sheet_action_1"/>-->
-
-<!--        <menuitem id="menu_se_attendance_create_sub"-->
-<!--                  name="Attendance Create"-->
-<!--                  parent="menu_se_attendance"-->
-<!--                  sequence="103"-->
-<!--                  action="open_view_attendance_create_action_1"/>-->
-
-<!--        <menuitem id="menu_se_attendance_sheet_sub"-->
-<!--                  name="Sheets"-->
-<!--                  parent="menu_se_attendance"-->
-<!--                  sequence="120"-->
-<!--                  action="open_view_attendance_sheet_action_1"/>-->
     </data>
 </odoo>

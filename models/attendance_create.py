@@ -8,6 +8,8 @@ class Attendance(models.Model):
     _description = 'Track attendance with automated system'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    sequence = fields.Char(strign='Reference', required=True, index=True, copy=False, default="NEW")
+
     attendance_date = fields.Date(string='Date:', default=fields.Date.today())
     name = fields.Many2one(comodel_name='se.subject', string="Course Name")
     program_id = fields.Many2one(comodel_name='se.program')
@@ -15,8 +17,8 @@ class Attendance(models.Model):
     semester = fields.Char(string="Semester")
     section = fields.Char(string="Section")
     total_student = fields.Integer(string="Total Student")
-    total_present_student = fields.Integer(string="Present Student")
-    total_absent_student = fields.Integer(string="Absent Student")
+    total_present_student = fields.Integer(string="Present")
+    total_absent_student = fields.Integer(string="Absent")
     classroom = fields.Char(string="Class Room")
     student_name = fields.Char(string="Student Name")
     batch_id = fields.Many2one(comodel_name='se.batch')
@@ -37,8 +39,8 @@ class Attendance(models.Model):
     active = fields.Boolean(string='Active:', default=True)
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('start', 'Attendance Start'),
-        ('done', 'Attendance Confirm'),
+        ('start', 'Start'),
+        ('done', 'Confirm'),
         ('cancel', 'Cancelled'),
     ], default='draft', string='Status')
 
@@ -53,6 +55,15 @@ class Attendance(models.Model):
 
     def action_cancel(self):
         self.state = 'cancel'
+
+    # Sequence
+    @api.model
+    def create(self, vals):
+        if vals.get('sequence', _('NEW')) == "NEW":
+            vals['sequence'] = self.env['ir.sequence'].next_by_code('se.attendance.management.system') or "NEW"
+        result = super(Attendance, self).create(vals)
+        logging.info(vals['sequence'])
+        return result
 
     @api.onchange('batch_id')
     def _onchange_batch(self):
